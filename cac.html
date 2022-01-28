@@ -237,7 +237,7 @@
         
         <div class="d-flex justify-content-end pt-3">
           <button type="reset" class="btn btn-light btn-lg">Reset all</button><br><br>
-          <button type="submit" id="submit" class="btn btn-light btn-lg" href="Thankyou.html">Submit form</button>
+          <button type="submit" id="submit" class="btn btn-light btn-lg" >Submit form</button>
         </div>
 </div> 
   </body>
@@ -405,21 +405,23 @@
     }
     
     address.onkeyup = function() {
-          const reg = /^[a-zA-Z0-9]{1,}$/;
-          if (reg.test(address.value.trim())) {
-          maddress.classList.remove("invalid");
-        maddress.classList.add("valid");
-          } 
-          else if(address.value.trim()==''){
-          maddress.classList.remove("valid");
-          maddress.classList.add("invalid");
-          }
-          else {
-          maddress.classList.remove("valid");
-          maddress.classList.add("invalid");
-          }
-        }
-        
+	  const reg = /^[a-zA-Z0-9 ,/*]{1,}$/;
+	  if (reg.test(address.value.trim())) {
+      maddress.classList.remove("invalid");
+    maddress.classList.add("valid");
+    a=1;
+	  } 
+	  else if(address.value.trim()==''){
+      maddress.classList.remove("valid");
+      maddress.classList.add("invalid");
+      a=0;
+	  }
+	  else {
+      maddress.classList.remove("valid");
+      maddress.classList.add("invalid");
+      a=0;
+	  }
+	}
       comment.onfocus = function() {
       document.getElementById("mcomment").style.display = "block";
     }
@@ -444,19 +446,63 @@
           mcomment.classList.add("invalid");
           }
         }
-      $("input:checkbox").on('click', function() {
-      // in the handler, 'this' refers to the box clicked on
-      var $box = $(this);
-      if ($box.is(":checked")) {
-        // the name of the box is retrieved using the .attr() method
-        // as it is assumed and expected to be immutable
-        var group = "input:checkbox[name='" + $box.attr("name") + "']";
-        // the checked state of the group/box on the other hand will change
-        // and the current value is retrieved using .prop() method
-        $(group).prop("checked", false);
-        $box.prop("checked", true);
-      } else {
-        $box.prop("checked", false);
-      }
-    });
+        function submit_form()
+{
+  
+  var x = validate();
+   // return x;
+  
+  if(u==0){
+    document.getElementById("muname").style.display = "block";
+    muname.classList.remove("valid");
+    muname.classList.add("invalid");
+    return false;
+  }
+  else if(p==0)
+  {
+  document.getElementById("message").style.display = "block";
+  letter.classList.remove("valid");
+    letter.classList.add("invalid");
+    return false;
+  }
+  else if(n==0)
+  {
+    document.getElementById("mname").style.display = "block";
+    mname.classList.remove("valid");
+      mname.classList.add("invalid");
+      return false;
+  }
+  else if(e==0)
+  {
+    document.getElementById("memail").style.display = "block";
+    memail.classList.remove("valid");
+      memail.classList.add("invalid");
+      return false;
+  }
+  else if(a==0)
+  {
+    document.getElementById("maddress").style.display = "block";
+    maddress.classList.remove("valid");
+    maddress.classList.add("invalid");
+    return false;
+  }
+  else if(c==0)
+  {
+    document.getElementById("mcomment").style.display = "block";
+    mcomment.classList.remove("valid");
+    mcomment.classList.add("invalid");
+    return false;
+  }
+  else if(t==0)
+  {
+    document.getElementById("mfeedback").style.display = "block";
+    //mfeedback.classList.remove("valid");
+    mfeedback.classList.add("invalid");
+    return false;
+  }
+  else{
+    alert("Form Submitted");
+    return true;
+  }
+}
     </script>
