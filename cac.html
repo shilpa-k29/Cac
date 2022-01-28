@@ -225,12 +225,20 @@
         </div>
         <p>Message</p>
         <div>
-          <textarea rows="4"></textarea>
+          
+          <div class="mb-4 pb-2">
+            <div class="form-outline">
+                <label class="form-label" for="form3Examplev4" style="color:rgb(15, 12, 12);">Feedback</label>
+              <input type="text" id="comment" class="form-control form-control-lg" autocomplete="off"/>
+              
+            </div>
+            <div id="mcomment" class="invalid" style="display:none;">cannot contain <b>null</b> values</div>
+          </div>
+        
+        <div class="d-flex justify-content-end pt-3">
+          <button type="reset" class="btn btn-light btn-lg">Reset all</button><br><br>
+          <button type="submit" id="submit" class="btn btn-light btn-lg">Submit form</button>
         </div>
-        <button type="submit" href="/">Submit</button><br><br><br>
-        <button type="reset" href="/">Reset</button>
-      </form>
-    </div>
 </div> 
   </body>
 </html>
